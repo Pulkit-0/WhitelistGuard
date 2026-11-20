@@ -48,7 +48,7 @@ internal static class Store
     public static readonly string Dir = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "WhitelistGuard");
     public static readonly string Config = Path.Combine(Dir, "allowed-sites.txt");
-    public static readonly string Log = Path.Combine(Dir, "dns.log");
+    public static readonly string LogFile = Path.Combine(Dir, "dns.log");
 
     public static void Ensure()
     {
@@ -99,7 +99,7 @@ internal static class Store
         try
         {
             Ensure();
-            File.AppendAllText(Log, $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {line}{Environment.NewLine}");
+            File.AppendAllText(LogFile, $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {line}{Environment.NewLine}");
         }
         catch { }
     }
